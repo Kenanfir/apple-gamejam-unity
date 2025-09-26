@@ -33,13 +33,25 @@ public class DamageDealer : MonoBehaviour
     
     private void DealDamage(Collider other)
     {
+        Debug.Log($"DamageDealer: Collision detected with {other.name} (Team: {team})");
+        
         Health targetHealth = other.GetComponent<Health>();
-        if (targetHealth == null) return;
+        if (targetHealth == null) 
+        {
+            Debug.Log($"No Health component found on {other.name}");
+            return;
+        }
         
         // Check if we're on different teams
         DamageDealer targetDealer = other.GetComponent<DamageDealer>();
-        if (targetDealer != null && targetDealer.team == team) return;
+        if (targetDealer != null && targetDealer.team == team) 
+        {
+            Debug.Log($"Same team ({team}), no damage to {other.name}");
+            return;
+        }
         
+        Debug.Log($"Dealing {damage} damage to {other.name}! (Target health: {targetHealth.CurrentHealth}/{targetHealth.MaxHealth})");
         targetHealth.Damage(damage);
+        Debug.Log($"After damage: {targetHealth.CurrentHealth}/{targetHealth.MaxHealth}");
     }
 }

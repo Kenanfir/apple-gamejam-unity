@@ -5,7 +5,7 @@ public class EnemyAI : MonoBehaviour
     [Header("Movement")]
     [SerializeField] private float moveSpeed = 2f;
     [SerializeField] private bool canFly = false;
-    [SerializeField] private bool moveTowardsPlayer = true;
+    [SerializeField] private bool moveTowardsPlayer = false; // Disabled for endless runner - enemies move with environment
     
     [Header("Attack")]
     [SerializeField] private float attackRange = 1f;
@@ -32,19 +32,18 @@ public class EnemyAI : MonoBehaviour
     {
         if (!player) return;
         
-        // Move towards player
-        if (moveTowardsPlayer)
+        // In endless runner, enemies are moved by EnvironmentMover
+        // Only do minimal movement adjustments if needed
+        if (moveTowardsPlayer && canFly)
         {
+            // Only flying enemies might need some vertical movement
             Vector3 direction = (player.position - transform.position).normalized;
-            direction.y = canFly ? direction.y : 0f; // Ground enemies don't fly
+            direction.x = 0f; // No horizontal movement - environment handles that
+            direction.z = 0f; // No Z movement
             
             if (rb)
             {
-                rb.linearVelocity = new Vector3(direction.x * moveSpeed, rb.linearVelocity.y, 0f);
-            }
-            else
-            {
-                transform.Translate(direction * moveSpeed * Time.deltaTime);
+                rb.linearVelocity = new Vector3(rb.linearVelocity.x, direction.y * moveSpeed, 0f);
             }
         }
         
