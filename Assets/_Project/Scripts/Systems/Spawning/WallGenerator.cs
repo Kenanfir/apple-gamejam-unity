@@ -55,7 +55,7 @@ public class WallGenerator : MonoBehaviour
         int maxWalls = 15; // Maximum number of walls to maintain
         if (currentTime - lastSpawnTime >= spawnInterval && activeCastleWalls.Count < maxWalls)
         {
-            Debug.Log($"Time-based wall spawn! Active walls: {activeCastleWalls.Count}");
+            // Debug.Log($"Time-based wall spawn! Active walls: {activeCastleWalls.Count}");
             SpawnCastleWallAhead();
             lastSpawnTime = currentTime;
         }
@@ -110,7 +110,7 @@ public class WallGenerator : MonoBehaviour
                 activeCastleWalls.RemoveAt(i);
                 
                 // Spawn a new wall ahead when one gets destroyed
-                Debug.Log("Wall destroyed, spawning new wall!");
+                // Debug.Log("Wall destroyed, spawning new wall!");
                 SpawnCastleWallAhead();
             }
         }

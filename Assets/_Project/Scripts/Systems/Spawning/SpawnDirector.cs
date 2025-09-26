@@ -18,11 +18,15 @@ public class SpawnDirector : MonoBehaviour
     [Header("Spawn Root")]
     [SerializeField] private Transform spawnRoot;
     
+    [Header("Environment Parent")]
+    [SerializeField] private Transform environmentParent;
+    
     [Header("Camera Reference")]
     [SerializeField] private Transform cameraTransform;
     
     private float nextSpawnTime;
     private Dictionary<GameObject, int> activeInstances = new Dictionary<GameObject, int>();
+    private readonly object dictionaryLock = new object();
     
     public static event Action<GameObject> OnSpawned;
     
@@ -48,28 +52,48 @@ public class SpawnDirector : MonoBehaviour
     
     private void SpawnRandom()
     {
-        // Choose between enemy and obstacle (50/50 for now)
-        SpawnTable table = UnityEngine.Random.value < 0.5f ? enemySpawnTable : obstacleSpawnTable;
-        if (!table) return;
-        
-        SpawnTable.SpawnEntry entry = GetRandomEntry(table);
-        if (entry == null || entry.prefab == null) return;
-        
-        // Check max instances
-        if (activeInstances.ContainsKey(entry.prefab) && 
-            activeInstances[entry.prefab] >= entry.maxInstancesAlive)
+        // Only spawn enemies for now
+        SpawnTable table = enemySpawnTable;
+        if (!table) 
         {
+            Debug.LogError("EnemySpawnTable is null! Check EnemySpawnDirector configuration.");
             return;
         }
         
-        // Spawn the object
-        Vector3 spawnPos = GetSpawnPosition(entry.prefab);
-        GameObject instance = Instantiate(entry.prefab, spawnPos, Quaternion.identity, spawnRoot);
+        Debug.Log($"Attempting to spawn from table with {table.entries.Count} entries");
         
-        // Track instance
-        if (!activeInstances.ContainsKey(entry.prefab))
-            activeInstances[entry.prefab] = 0;
-        activeInstances[entry.prefab]++;
+        SpawnTable.SpawnEntry entry = GetRandomEntry(table);
+        if (entry == null || entry.prefab == null) 
+        {
+            Debug.LogWarning("No valid spawn entry found or prefab is null");
+            return;
+        }
+        
+        Debug.Log($"Selected entry: {entry.prefab.name} (weight: {entry.weight}, max: {entry.maxInstancesAlive})");
+        
+        // Check max instances (thread-safe)
+        lock (dictionaryLock)
+        {
+            if (activeInstances.ContainsKey(entry.prefab) && 
+                activeInstances[entry.prefab] >= entry.maxInstancesAlive)
+            {
+                return;
+            }
+        }
+        
+        // Spawn the object as child of environment parent (so it moves with environment)
+        Vector3 spawnPos = GetSpawnPosition(entry.prefab);
+        Debug.Log($"Spawning {entry.prefab.name} at position {spawnPos}");
+        Transform parentTransform = environmentParent ? environmentParent : spawnRoot;
+        GameObject instance = Instantiate(entry.prefab, spawnPos, Quaternion.identity, parentTransform);
+        
+        // Track instance (thread-safe)
+        lock (dictionaryLock)
+        {
+            if (!activeInstances.ContainsKey(entry.prefab))
+                activeInstances[entry.prefab] = 0;
+            activeInstances[entry.prefab]++;
+        }
         
         // Clean up when destroyed
         var destroyTracker = instance.AddComponent<SpawnInstanceTracker>();
@@ -127,12 +151,15 @@ public class SpawnDirector : MonoBehaviour
     
     public void OnInstanceDestroyed(GameObject prefab)
     {
-        if (activeInstances.ContainsKey(prefab))
+        lock (dictionaryLock)
         {
-            activeInstances[prefab]--;
-            if (activeInstances[prefab] <= 0)
+            if (activeInstances.ContainsKey(prefab))
             {
-                activeInstances.Remove(prefab);
+                activeInstances[prefab]--;
+                if (activeInstances[prefab] <= 0)
+                {
+                    activeInstances.Remove(prefab);
+                }
             }
         }
     }
