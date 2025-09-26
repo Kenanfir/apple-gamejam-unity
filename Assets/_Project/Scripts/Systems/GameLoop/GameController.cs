@@ -118,6 +118,19 @@ public class GameController : MonoBehaviour
         if (rescueSpawnDirector) rescueSpawnDirector.enabled = false;
         
         OnGameOver?.Invoke();
+        
+        // Exit the game after a short delay
+        Debug.Log("Player died! Exiting game...");
+        Invoke(nameof(ExitGame), 1f);
+    }
+    
+    private void ExitGame()
+    {
+        #if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+        #else
+            Application.Quit();
+        #endif
     }
     
     public void TogglePause()

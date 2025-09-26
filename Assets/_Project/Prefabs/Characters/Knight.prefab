@@ -14,7 +14,8 @@ GameObject:
   - component: {fileID: 1234567896}
   - component: {fileID: 1234567897}
   - component: {fileID: 730763002276582155}
-  - component: {fileID: 5946751839247911825}
+  - component: {fileID: 3980261675870580637}
+  - component: {fileID: 1234567898}
   m_Layer: 8
   m_Name: Knight
   m_TagString: Player
@@ -128,7 +129,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 1
   currentHealth: 1
---- !u!114 &5946751839247911825
+--- !u!114 &3980261675870580637
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -137,19 +138,31 @@ MonoBehaviour:
   m_GameObject: {fileID: 1234567890}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bd21dcc3f9b9e42e8bf71ca690dd7955, type: 3}
+  m_Script: {fileID: 11500000, guid: 91fa3f015183448d4945505405700afe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackAction: {fileID: 3001919216989983466, guid: 052faaac586de48259a63d0c4782560b, type: 3}
-  abilityAction: {fileID: -4090225696740746782, guid: 052faaac586de48259a63d0c4782560b, type: 3}
-  partyMember: {fileID: 0}
+  attackAction: {fileID: 0}
+  attackPrefab: {fileID: 0}
   attackOrigin: {fileID: 0}
-  slashHitboxPrefab: {fileID: 0}
-  blastProjectilePrefab: {fileID: 0}
-  slashRange: 0.8
-  slashDuration: 0.2
-  projectileSpeed: 10
-  projectileLifetime: 3
+  attackRange: 1.5
+  attackDuration: 0.3
+  attackCooldown: 0.5
+--- !u!114 &1234567898
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1234567890}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 354efa395f821473abd378fb228dde19, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 0
+  team: 0
+  useOnTrigger: 1
+  useOnCollision: 0
 --- !u!1001 &8442883335309299381
 PrefabInstance:
   m_ObjectHideFlags: 0

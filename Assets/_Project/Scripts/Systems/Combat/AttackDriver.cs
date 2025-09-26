@@ -72,9 +72,18 @@ public class AttackDriver : MonoBehaviour
     
     private void OnAttackPerformed(InputAction.CallbackContext context)
     {
-        if (!partyMember || !partyMember.IsAlive) return;
-        if (attackCooldownTimer > 0) return;
+        if (!partyMember || !partyMember.IsAlive) 
+        {
+            Debug.Log("Attack failed: No party member or not alive");
+            return;
+        }
+        if (attackCooldownTimer > 0) 
+        {
+            Debug.Log("Attack failed: On cooldown");
+            return;
+        }
         
+        Debug.Log("Attack performed!");
         PerformAttack();
     }
     
@@ -124,8 +133,13 @@ public class AttackDriver : MonoBehaviour
     
     private void PerformKnightSlash()
     {
-        if (!slashHitboxPrefab) return;
+        if (!slashHitboxPrefab) 
+        {
+            Debug.LogError("SlashHitbox prefab is null! Check AttackDriver configuration.");
+            return;
+        }
         
+        Debug.Log("Creating slash hitbox!");
         GameObject hitbox = Instantiate(slashHitboxPrefab, attackOrigin.position, attackOrigin.rotation);
         hitbox.transform.SetParent(attackOrigin);
         

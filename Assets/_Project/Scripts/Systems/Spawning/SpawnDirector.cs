@@ -56,7 +56,7 @@ public class SpawnDirector : MonoBehaviour
         SpawnTable table = enemySpawnTable;
         if (!table) 
         {
-            Debug.LogError("EnemySpawnTable is null! Check EnemySpawnDirector configuration.");
+            // Debug.LogError("EnemySpawnTable is null! Check EnemySpawnDirector configuration.");
             return;
         }
         
@@ -65,11 +65,11 @@ public class SpawnDirector : MonoBehaviour
         SpawnTable.SpawnEntry entry = GetRandomEntry(table);
         if (entry == null || entry.prefab == null) 
         {
-            Debug.LogWarning("No valid spawn entry found or prefab is null");
+            // Debug.LogWarning("No valid spawn entry found or prefab is null");
             return;
         }
         
-        Debug.Log($"Selected entry: {entry.prefab.name} (weight: {entry.weight}, max: {entry.maxInstancesAlive})");
+        // Debug.Log($"Selected entry: {entry.prefab.name} (weight: {entry.weight}, max: {entry.maxInstancesAlive})");
         
         // Check max instances (thread-safe)
         lock (dictionaryLock)
@@ -83,7 +83,7 @@ public class SpawnDirector : MonoBehaviour
         
         // Spawn the object as child of environment parent (so it moves with environment)
         Vector3 spawnPos = GetSpawnPosition(entry.prefab);
-        Debug.Log($"Spawning {entry.prefab.name} at position {spawnPos}");
+        // Debug.Log($"Spawning {entry.prefab.name} at position {spawnPos}");
         Transform parentTransform = environmentParent ? environmentParent : spawnRoot;
         GameObject instance = Instantiate(entry.prefab, spawnPos, Quaternion.identity, parentTransform);
         
