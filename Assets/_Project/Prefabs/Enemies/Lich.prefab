@@ -185,8 +185,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: BeholderPolyartDefault
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 2144014939447178676, guid: c73a559184154c75991d095521bdea87, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
