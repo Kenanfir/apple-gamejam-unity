@@ -13,11 +13,19 @@ MonoBehaviour:
   m_Name: EnemySpawnTable
   m_EditorClassIdentifier: 
   entries:
-  - prefab: {fileID: 1234567890, guid: 00b5558bdee3943f19c3f88f8ce61bab, type: 3}
+  - prefab: {fileID: 1234567890, guid: 4640ced0230ec4157bfb8a905a8f3352, type: 3}
     weight: 1
     minDistance: 0
     maxInstancesAlive: 5
   - prefab: {fileID: 1234567890, guid: c88b06228f7d442e1b5f22b79b53398b, type: 3}
     weight: 1
     minDistance: 0
-    maxInstancesAlive: 50
+    maxInstancesAlive: 10
+  - prefab: {fileID: 1234567890, guid: 00b5558bdee3943f19c3f88f8ce61bab, type: 3}
+    weight: 1
+    minDistance: 0
+    maxInstancesAlive: 10
+  - prefab: {fileID: 1234567890, guid: 4e8755e3716ea4b9e8c1569c3a98b5f5, type: 3}
+    weight: 1
+    minDistance: 0
+    maxInstancesAlive: 10
