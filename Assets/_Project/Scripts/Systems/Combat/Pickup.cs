@@ -3,11 +3,11 @@ using UnityEngine;
 public class Pickup : MonoBehaviour
 {
     [Header("Pickup Type")]
-    [SerializeField] private PickupType pickupType = PickupType.Health;
+    public PickupType pickupType = PickupType.Health;
     [SerializeField] private int value = 1;
     
     [Header("Character Rescue")]
-    [SerializeField] private CharacterType characterToRescue = CharacterType.Knight;
+    public CharacterType characterToRescue = CharacterType.Knight;
     
     [Header("Effects")]
     [SerializeField] private GameObject pickupEffect;

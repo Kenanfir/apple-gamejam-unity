@@ -11,6 +11,7 @@ public class Health : MonoBehaviour
     public static event Action<Health, int> OnDamaged;
     public static event Action<Health, int> OnHealed;
     public static event Action<Health> OnDied;
+    public static event Action<Health> OnHealthDepleted; // Alias for OnDied for backward compatibility
     
     public int MaxHealth => maxHealth;
     public int CurrentHealth => currentHealth;
@@ -32,6 +33,7 @@ public class Health : MonoBehaviour
         if (IsDead)
         {
             OnDied?.Invoke(this);
+            OnHealthDepleted?.Invoke(this);
         }
     }
     

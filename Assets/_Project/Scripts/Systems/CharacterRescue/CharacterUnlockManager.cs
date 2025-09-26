@@ -7,7 +7,6 @@ public class CharacterUnlockManager : MonoBehaviour
     [Header("Character Unlock Data")]
     [SerializeField] private CharacterUnlockData unlockData;
     
-    [Header("Events")]
     public static event Action<CharacterType> OnCharacterRescued;
     public static event Action<List<CharacterType>> OnUnlockedCharactersChanged;
     
