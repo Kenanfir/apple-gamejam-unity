@@ -176,46 +176,37 @@ Game (Scene)
 
 ## 📦 Required Data Assets
 
-### **Create these ScriptableObject assets:**
+### **✅ Already Created Assets:**
 
 #### **CharacterUnlockData.asset**
 **Path:** Assets/_Project/Data/CharacterRescue/CharacterUnlockData.asset
-**Settings:**
-- Add rescue characters:
-  - Mage: requiredDistance = 500f
-  - Archer: requiredDistance = 1000f
-  - Warrior: requiredDistance = 1500f
-  - Rogue: requiredDistance = 2000f
+**Status:** ✅ Created
+**Contains:** Rescue character configuration with distance requirements
 
 #### **RescueSpawnTable.asset**
 **Path:** Assets/_Project/Data/CharacterRescue/RescueSpawnTable.asset
-**Settings:**
-- Add rescue entries for each character
-- Set spawn weights and max instances
-- Set spawnDistanceAhead = 30f
-- Set spawnYPosition = 0f
+**Status:** ✅ Created
+**Contains:** Rescue spawn settings and character entries
 
 #### **GameTuning_Default.asset**
 **Path:** Assets/_Project/Data/Balance/Game/GameTuning_Default.asset
-**Settings:**
-- baseSpawnInterval = 2f
-- spawnIntervalMin = 0.5f
-- speedRampPerSecond = 0.1f
-- spawnDistanceAhead = 30f
-- groundLaneY = 0f
-- airLaneY = 3f
+**Status:** ✅ Exists
+**Contains:** Game balance settings (spawn intervals, speeds, etc.)
 
 #### **PlayerConfig_Default.asset**
 **Path:** Assets/_Project/Data/Balance/Player/PlayerConfig_Default.asset
-**Settings:**
-- startSpeed = 6f
-- maxSpeed = 12f
-- acceleration = 1f
-- jumpForce = 7.5f
-- jumpBuffer = 0.15f
-- coyoteTime = 0.12f
-- extraGravity = 15f
-- fallGravityMultiplier = 1.4f
+**Status:** ✅ Exists
+**Contains:** Player movement settings (speed, jump, gravity, etc.)
+
+#### **EnemySpawnTable.asset**
+**Path:** Assets/_Project/Data/Balance/Spawning/EnemySpawnTable.asset
+**Status:** ✅ Exists
+**Contains:** Enemy spawn configuration
+
+#### **ObstacleSpawnTable.asset**
+**Path:** Assets/_Project/Data/Balance/Spawning/ObstacleSpawnTable.asset
+**Status:** ✅ Exists
+**Contains:** Obstacle spawn configuration
 
 ---
 

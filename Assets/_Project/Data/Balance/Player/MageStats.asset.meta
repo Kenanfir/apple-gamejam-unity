@@ -1,8 +1,9 @@
 fileFormatVersion: 2
-guid: 8e0378e6062e144a287cf90207da6618
-NativeFormatImporter:
+guid: 12345678901234567890123456789012
+ScriptedImporter:
+  internalIDToNameTable: []
   externalObjects: {}
-  mainObjectFileID: 0
+  serializedVersion: 2
   userData: 
   assetBundleName: 
   assetBundleVariant: 
