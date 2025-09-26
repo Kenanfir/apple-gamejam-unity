@@ -9,33 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c3d4e5f6789012345678901234abcdef, type: 3}
+  m_Script: {fileID: 11500000, guid: 1c57eb95e8c4f415b9f5b7c2352d25fb, type: 3}
   m_Name: RescueSpawnTable
   m_EditorClassIdentifier: 
-  rescueEntries:
-  - characterType: 1
-    rescuePrefab: {fileID: 0}
-    requiredDistance: 500
-    spawnWeight: 1
-    maxInstances: 1
-    characterName: Mage
-    characterIcon: {fileID: 0}
-    characterColor: {r: 0.2, g: 0.8, b: 1, a: 1}
-  - characterType: 2
-    rescuePrefab: {fileID: 0}
-    requiredDistance: 1000
-    spawnWeight: 1
-    maxInstances: 1
-    characterName: Archer
-    characterIcon: {fileID: 0}
-    characterColor: {r: 0.2, g: 1, b: 0.2, a: 1}
-  - characterType: 3
-    rescuePrefab: {fileID: 0}
-    requiredDistance: 1500
-    spawnWeight: 1
-    maxInstances: 1
-    characterName: Warrior
-    characterIcon: {fileID: 0}
-    characterColor: {r: 1, g: 0.2, b: 0.2, a: 1}
+  rescueEntries: []
   spawnDistanceAhead: 30
   spawnYPosition: 0

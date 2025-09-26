@@ -140,8 +140,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd21dcc3f9b9e42e8bf71ca690dd7955, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackAction: {fileID: 0}
-  abilityAction: {fileID: 0}
+  attackAction: {fileID: 3001919216989983466, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  abilityAction: {fileID: -4090225696740746782, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   partyMember: {fileID: 0}
   attackOrigin: {fileID: 0}
   slashHitboxPrefab: {fileID: 0}

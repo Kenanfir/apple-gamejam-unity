@@ -28,6 +28,7 @@ Game (Scene)
 ### 1. **GameController (Empty GameObject)**
 **Components:**
 - `GameController` script
+- `RunStats` script
 
 **Settings:**
 - `usePartySystem = false`
@@ -35,6 +36,10 @@ Game (Scene)
 - `rescueSpawnDirector = [RescueSpawnDirector]`
 - `spawnDirector = [EnemySpawnDirector]`
 - `runStats = [RunStats component]`
+- `gameTuning = [GameTuning asset]`
+- `playerConfig = [PlayerConfig asset]`
+
+**RunStats Component Settings:**
 - `gameTuning = [GameTuning asset]`
 - `playerConfig = [PlayerConfig asset]`
 
@@ -113,8 +118,9 @@ Game (Scene)
 - `gameTuning = [GameTuning asset]`
 
 #### **4c. SpawnRoot (Empty GameObject)**
-**Purpose:** Parent for all spawned objects
+**Purpose:** Parent for all spawned objects (enemies, obstacles, rescues)
 **Position:** (0, 0, 0)
+**Children:** All spawned enemies and obstacles will be instantiated here
 
 ---
 
@@ -207,6 +213,34 @@ Game (Scene)
 **Path:** Assets/_Project/Data/Balance/Spawning/ObstacleSpawnTable.asset
 **Status:** ✅ Exists
 **Contains:** Obstacle spawn configuration
+
+---
+
+## 👾 Enemy Prefabs
+
+### **Existing Enemy Prefabs:**
+- **Slime.prefab** - Ground enemy
+- **Flying.prefab** - Flying enemy  
+- **Lich.prefab** - Magic enemy
+- **RockGolem.prefab** - Heavy enemy
+
+### **Enemy Prefab Components:**
+Each enemy prefab should have:
+- **Transform** - Position, rotation, scale
+- **Rigidbody** - Physics (for movement)
+- **Collider** - Collision detection
+- **EnemyAI** - AI behavior (movement, attack)
+- **Health** - Health system
+- **DamageDealer** - Damage dealing
+- **EnemyStats** - Stats configuration
+- **Visual Model** - 3D character model
+- **Tag:** "Enemy"
+
+### **Enemy Spawning:**
+- **Enemies are spawned automatically** by EnemySpawnDirector
+- **Spawned into SpawnRoot** as children
+- **Positioned ahead of player** based on camera position
+- **Destroyed when behind player** to save memory
 
 ---
 
