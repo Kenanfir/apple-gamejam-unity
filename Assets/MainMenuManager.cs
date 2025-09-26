@@ -20,6 +20,7 @@ public class MainMenuManager : MonoBehaviour {
     [SerializeField] private RectTransform uiRoot;            // Parent container for the menu UI
 
     [SerializeField] private CanvasGroup MainMenuButtons; 
+    [SerializeField] private CanvasGroup MainMenuCanvas; 
 
     [Header("Tween Settings")]
     [SerializeField] private Vector3 targetCameraEuler = new Vector3(0f, 25f, 0f);
@@ -92,9 +93,10 @@ public class MainMenuManager : MonoBehaviour {
         PlayTransition(() => {
             // Fade out BGM before scene change
             if (soundManager != null) soundManager.FadeOutBGM(0.5f);
+            Tween.Alpha(MainMenuCanvas, 0f, 0.8f, ease);
             
             // Load game scene after a short delay to let audio fade
-            StartCoroutine(LoadSceneAfterDelay(gameSceneName, 0.5f));
+            StartCoroutine(LoadSceneAfterDelay(gameSceneName, 1f));
         });
     }
 
@@ -183,7 +185,7 @@ public class MainMenuManager : MonoBehaviour {
         if (exitButton) exitButton.interactable = value;
     }
 
-    // --- Audio-friendly helper methods ---
+
     System.Collections.IEnumerator LoadSceneAfterDelay(string sceneName, float delay) {
         yield return new WaitForSeconds(delay);
         if (!string.IsNullOrEmpty(sceneName)) {
