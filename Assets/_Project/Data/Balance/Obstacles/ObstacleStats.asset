@@ -9,6 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: SlimeConfig
+  m_Script: {fileID: 11500000, guid: f0140d50bb5584841aefa05e10eef9c8, type: 3}
+  m_Name: ObstacleStats
   m_EditorClassIdentifier: 
+  destroyableBy: 0
+  damageOnTouch: 1
+  isRolling: 0
+  rollSpeed: 5

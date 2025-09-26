@@ -9,9 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: adeb0624324bb4f3b8c82370831a7b87}
-  m_Name: KnightStats
-  maxHealth: 3
-  attackCooldown: 0.5
-  abilityCooldown: 2
-  characterType: 0
+  m_Script: {fileID: 11500000, guid: 1c57eb95e8c4f415b9f5b7c2352d25fb, type: 3}
+  m_Name: RescueSpawnTable
+  m_EditorClassIdentifier: 
+  rescueEntries: []
+  spawnDistanceAhead: 30
+  spawnYPosition: 0

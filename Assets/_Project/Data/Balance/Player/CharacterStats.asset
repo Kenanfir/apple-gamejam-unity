@@ -9,6 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: MageConfig
+  m_Script: {fileID: 11500000, guid: adeb0624324bb4f3b8c82370831a7b87, type: 3}
+  m_Name: CharacterStats
   m_EditorClassIdentifier: 
+  maxHealth: 3
+  attackCooldown: 0.5
+  abilityCooldown: 2
+  characterType: 0

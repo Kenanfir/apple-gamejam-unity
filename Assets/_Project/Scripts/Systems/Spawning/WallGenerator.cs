@@ -23,6 +23,7 @@ public class WallGenerator : MonoBehaviour
     
     private List<GameObject> activeCastleWalls = new List<GameObject>();
     private float lastWallSpawnX;
+    private float lastSpawnTime = 0f;
     
     void Start()
     {
@@ -42,14 +43,22 @@ public class WallGenerator : MonoBehaviour
         
         float playerX = playerTransform.position.x;
         
-        // Spawn new castle walls ahead
-        if (playerX + spawnDistanceAhead > lastWallSpawnX)
-        {
-            SpawnCastleWallAhead();
-        }
-        
         // Clean up castle walls behind player
         CleanupCastleWallsBehind(playerX);
+        
+        // Simple time-based spawning - spawn a wall every X seconds
+        // This ensures consistent wall generation regardless of position tracking
+        float currentTime = Time.time;
+        float spawnInterval = 1.2f; // Spawn a wall every 1.2 seconds
+        
+        // Only spawn if we don't have too many walls already
+        int maxWalls = 15; // Maximum number of walls to maintain
+        if (currentTime - lastSpawnTime >= spawnInterval && activeCastleWalls.Count < maxWalls)
+        {
+            Debug.Log($"Time-based wall spawn! Active walls: {activeCastleWalls.Count}");
+            SpawnCastleWallAhead();
+            lastSpawnTime = currentTime;
+        }
     }
     
     private void SpawnInitialCastleWalls()
@@ -63,7 +72,10 @@ public class WallGenerator : MonoBehaviour
     
     private void SpawnCastleWallAhead()
     {
-        SpawnCastleWallAtX(lastWallSpawnX + castleWallSpacing);
+        // Spawn wall much closer to the player to reduce gaps
+        float playerX = playerTransform.position.x;
+        float spawnX = playerX + 22f; // Spawn only 20 units ahead of player (much closer)
+        SpawnCastleWallAtX(spawnX);
     }
     
     private void SpawnCastleWallAtX(float x)
@@ -96,6 +108,10 @@ public class WallGenerator : MonoBehaviour
             {
                 Destroy(activeCastleWalls[i]);
                 activeCastleWalls.RemoveAt(i);
+                
+                // Spawn a new wall ahead when one gets destroyed
+                Debug.Log("Wall destroyed, spawning new wall!");
+                SpawnCastleWallAhead();
             }
         }
     }

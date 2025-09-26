@@ -1,28 +1,30 @@
 # Endless - 3D Side-Scroller Game Jam Project
 
 ## Game Overview
-**Endless** is a 3D side-scroller endless runner game featuring two characters: a Knight (tank/physical) and a Mage (magic/phasing). Players can switch between characters using number keys and must survive as long as possible.
+**Endless** is a 3D side-scroller endless runner game featuring a **character rescue system**. Players start as a Knight and must rescue other characters (Mage, Archer, Warrior) during their run. Rescued characters become available for future runs.
 
 ## Game Loop
 - **Endless Runner**: Continuous side-scrolling gameplay
-- **Character Switching**: Knight tanks physical damage, Mage phases through magic
-- **Dual Character System**: Switch between Knight (1) and Mage (2) on number keys
-- **Game Over**: Lose when both characters die
+- **Character Rescue**: Rescue characters by bumping into them during runs
+- **Single Character System**: Play as one character per run (Knight by default)
+- **Character Unlocking**: Rescued characters saved permanently for future runs
 - **Progressive Difficulty**: Obstacles and enemies increase over time
 
 ## Controls
-- **Movement**: A/D or Left/Right Arrow Keys
 - **Jump**: Space
 - **Attack**: Left Mouse Button
 - **Ability**: Right Mouse Button
-- **Switch Character**: 1 (Knight) / 2 (Mage)
 - **Pause**: Escape
+- **Rescue Characters**: Bump into them (automatic)
 
 ## Game Design
 
 ### Characters
-- **Knight**: Physical tank, can destroy obstacles, weak to magic
-- **Mage**: Magic user, can phase through obstacles, weak to physical
+- **Knight**: Starting character, always unlocked
+- **Mage**: Rescue at 500m distance
+- **Archer**: Rescue at 1000m distance  
+- **Warrior**: Rescue at 1500m distance
+- **Rogue**: Rescue at 2000m distance
 
 ### Enemies
 - **Slime**: Magic-weak, basic ground enemy
@@ -31,9 +33,9 @@
 - **Flying Enemy**: Air threat, requires different tactics
 
 ### Obstacles
-- **High Barriers**: Knight can destroy, Mage must phase through
+- **High Barriers**: Must be jumped over
 - **Pits**: Must be jumped over
-- **Rolling Boulders**: Knight can destroy, Mage must avoid
+- **Rolling Boulders**: Must be avoided or destroyed
 
 ### Visual Style
 - Low-poly 3D aesthetic
@@ -94,9 +96,9 @@ Third-party asset links stored in `Assets/ThirdParty/Links/`:
 
 ## Next Steps
 1. Import character assets from Unity Asset Store
-2. Implement movement and character switching scripts
-3. Add enemy AI and spawning systems
-4. Create obstacle generation system
-5. Implement health and damage systems
+2. Set up Game scene with rescue system (see GAME_SCENE_SETUP.md)
+3. Create rescue character prefabs
+4. Configure spawn tables and data assets
+5. Implement main menu character selection
 6. Add audio and visual effects
 7. Polish UI and game feel
