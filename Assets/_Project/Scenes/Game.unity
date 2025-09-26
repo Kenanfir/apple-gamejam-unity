@@ -166,7 +166,7 @@ MonoBehaviour:
   moveSpeed: 6
   usePlayerSpeed: 1
   playerMotor: {fileID: 2046338677}
-  environmentParent: {fileID: 0}
+  environmentParent: {fileID: 2024724716}
   showDebugInfo: 0
 --- !u!1 &268902499
 GameObject:
@@ -459,6 +459,8 @@ GameObject:
   m_Component:
   - component: {fileID: 858280368}
   - component: {fileID: 858280367}
+  - component: {fileID: 858280369}
+  - component: {fileID: 858280370}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -480,7 +482,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnDirector: {fileID: 1832817511}
   rescueSpawnDirector: {fileID: 1005300019}
-  runStats: {fileID: 0}
+  runStats: {fileID: 858280369}
   gameTuning: {fileID: 11400000, guid: 98855f6ce12994cfb8896af7b5c39e22, type: 2}
   playerConfig: {fileID: 11400000, guid: 12345678901234567890123456789012, type: 2}
   usePartySystem: 0
@@ -502,6 +504,36 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &858280369
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 858280366}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 288eb36378f3e4aecb336138548c595c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  distance: 0
+  timeAlive: 0
+  score: 0
+  gameTuning: {fileID: 11400000, guid: 98855f6ce12994cfb8896af7b5c39e22, type: 2}
+  playerConfig: {fileID: 11400000, guid: 12345678901234567890123456789012, type: 2}
+--- !u!114 &858280370
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 858280366}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a57b76b8803f54dbba067fe8c0a7315c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unlockData: {fileID: 11400000, guid: 6984e84922793431e9ea345ce92f2c2f, type: 2}
 --- !u!1 &946715940
 GameObject:
   m_ObjectHideFlags: 0
@@ -548,11 +580,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   castleWallPrefab: {fileID: 1173524474685424601, guid: 880c0cd5cace64d2ba9a850aea53fcae, type: 3}
   castleWallSpacing: 5
-  spawnDistanceAhead: 10
-  destroyDistanceBehind: -10
+  spawnDistanceAhead: 30
+  destroyDistanceBehind: -30
   playerTransform: {fileID: 2046338674}
-  environmentParent: {fileID: 0}
-  castleWallY: -6
+  environmentParent: {fileID: 2024724716}
+  castleWallY: -7
   yRotation: 90
 --- !u!1 &1005300017
 GameObject:
@@ -598,13 +630,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4e5f6789012345678901234abcdef01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rescueSpawnTable: {fileID: 0}
-  spawnRoot: {fileID: 0}
-  cameraTransform: {fileID: 0}
+  rescueSpawnTable: {fileID: 11400000, guid: a794f56fce2e6478dace5a9a20c9e7c4, type: 2}
+  spawnRoot: {fileID: 1946889800}
+  cameraTransform: {fileID: 268902502}
   spawnInterval: 10
   minSpawnDistance: 100
-  runStats: {fileID: 0}
-  unlockManager: {fileID: 0}
+  runStats: {fileID: 858280369}
+  unlockManager: {fileID: 858280370}
 --- !u!1001 &1177026461
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -861,13 +893,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b642b6194e6f49489ba842a5556cd1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemySpawnTable: {fileID: 0}
-  obstacleSpawnTable: {fileID: 0}
-  wallGenerator: {fileID: 0}
+  enemySpawnTable: {fileID: 11400000, guid: e50ec960b80ad4df182c9afce7552b93, type: 2}
+  obstacleSpawnTable: {fileID: 11400000, guid: e50ec960b80ad4df182c9afce7552b93, type: 2}
+  wallGenerator: {fileID: 946715942}
   enableWallGeneration: 1
-  gameTuning: {fileID: 0}
-  spawnRoot: {fileID: 0}
-  cameraTransform: {fileID: 0}
+  gameTuning: {fileID: 11400000, guid: 98855f6ce12994cfb8896af7b5c39e22, type: 2}
+  spawnRoot: {fileID: 1946889800}
+  cameraTransform: {fileID: 268902502}
 --- !u!1 &1946889799
 GameObject:
   m_ObjectHideFlags: 0
