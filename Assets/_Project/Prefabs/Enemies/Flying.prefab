@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 1234567894}
   - component: {fileID: 1234567895}
   - component: {fileID: 1234567896}
-  - component: {fileID: 1234567897}
   m_Layer: 9
   m_Name: Flying
   m_TagString: Enemy
@@ -101,12 +100,12 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0.5, z: 0}
+  m_Size: {x: 1, y: 0.62528014, z: 0.2500104}
+  m_Center: {x: 0, y: 0.31264007, z: -0.040862873}
 --- !u!54 &1234567896
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -186,7 +185,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2090102285909024232, guid: cc2904f8420d54e45b80616562ff859c, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

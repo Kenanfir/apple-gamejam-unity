@@ -119,9 +119,9 @@ public class GameController : MonoBehaviour
         
         OnGameOver?.Invoke();
         
-        // Exit the game after a short delay
-        Debug.Log("Player died! Exiting game...");
-        Invoke(nameof(ExitGame), 1f);
+        // Reload the scene after a short delay
+        Debug.Log("Player died! Reloading scene...");
+        Invoke(nameof(RestartGame), 1f);
     }
     
     private void ExitGame()

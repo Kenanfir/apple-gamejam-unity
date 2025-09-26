@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 1234567894}
   - component: {fileID: 1234567895}
   - component: {fileID: 1234567896}
-  - component: {fileID: 1234567897}
   m_Layer: 9
   m_Name: Lich
   m_TagString: Enemy
@@ -105,8 +104,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0.5, z: 0}
+  m_Size: {x: 1, y: 0.6722958, z: 0.41001356}
+  m_Center: {x: 0, y: 1.3959616, z: -0.11210024}
 --- !u!54 &1234567896
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -186,7 +185,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: BeholderPolyartDefault
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2144014939447178676, guid: c73a559184154c75991d095521bdea87, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
